@@ -11,7 +11,6 @@ metadata:
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
   name: mnist-notebook
-  namespace: mnist
 spec:
   template:
     spec:

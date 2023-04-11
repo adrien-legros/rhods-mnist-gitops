@@ -8,7 +8,6 @@ metadata:
     name: mnist
     opendatahub.io/dashboard: "true"
   name: mnist
-  namespace: mnist
 spec:
   predictor:
     model:

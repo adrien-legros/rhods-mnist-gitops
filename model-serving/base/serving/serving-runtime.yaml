@@ -7,7 +7,6 @@ metadata:
     name: model-server-mnist
     opendatahub.io/dashboard: "true"
   name: model-server-mnist
-  namespace: mnist
 spec:
   builtInAdapter:
     memBufferBytes: 134217728

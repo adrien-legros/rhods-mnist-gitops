@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: model-serving
+  namespace: openshift-gitops
 spec:
   generators:
   - list:
@@ -18,10 +19,13 @@ spec:
       source:
         repoURL: https://github.com/adrien-legros/rhods-mnist-gitops
         targetRevision: HEAD
-        path: model-serving/overlays/{{harware}}
+        path: model-serving/overlays/{{hardware}}
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: guestbook
+        namespace: '{{namespace}}'
       syncPolicy:
         syncOptions:
         - CreateNamespace=false
+        automated:
+          selfHeal: true
+          prune: true
