@@ -2,9 +2,8 @@ apiVersion: serving.kserve.io/v1alpha1
 kind: ServingRuntime
 metadata:
   annotations:
-    enable-auth: "true"
+    enable-route: "true"
   labels:
-    name: model-server-mnist
     opendatahub.io/dashboard: "true"
   name: model-server-mnist
 spec:
