@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: model-serving
+spec:
+  generators:
+  - list:
+      elements:
+      - namespace: model-serving-prod
+        hardware: gpu
+      - namespace: model-serving-dev
+        hardware: cpu
+  template:
+    metadata:
+      name: '{{namespace}}-mnist'
+    spec:
+      project: model-serving
+      source:
+        repoURL: https://github.com/adrien-legros/rhods-mnist-gitops
+        targetRevision: HEAD
+        path: model-serving/overlays/{{harware}}
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: guestbook
