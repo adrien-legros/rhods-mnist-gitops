@@ -8,9 +8,7 @@ spec:
   - list:
       elements:
       - namespace: model-serving-prod
-        hardware: gpu
       - namespace: model-serving-dev
-        hardware: cpu
   template:
     metadata:
       name: '{{namespace}}-mnist'
@@ -19,7 +17,7 @@ spec:
       source:
         repoURL: https://github.com/adrien-legros/rhods-mnist-gitops
         targetRevision: HEAD
-        path: model-serving/overlays/{{hardware}}
+        path: model-serving/
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
